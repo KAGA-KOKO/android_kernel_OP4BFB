@@ -1060,7 +1060,7 @@ static void irq_work(struct irq_work *irq_work)
 	cpufreq_interactive_update(icpu);
 	icpu->work_in_progress = false;
 }
-
+#if 0
 static void update_util_handler(struct update_util_data *data, u64 time,
 				unsigned int flags)
 {
@@ -1123,6 +1123,7 @@ static void icpu_cancel_work(struct interactive_cpu *icpu)
 	icpu->work_in_progress = false;
 	del_timer_sync(&icpu->slack_timer);
 }
+#endif   /* end of if 0 */
 
 static struct interactive_policy *
 interactive_policy_alloc(struct cpufreq_policy *policy)
@@ -1302,22 +1303,22 @@ int cpufreq_interactive_start(struct cpufreq_policy *policy)
 		slack_timer_resched(icpu, cpu, false);
 	}
 
-	gov_set_update_util(ipolicy);
+	/*gov_set_update_util(ipolicy);*/
 	return 0;
 }
 
 void cpufreq_interactive_stop(struct cpufreq_policy *policy)
 {
-	struct interactive_policy *ipolicy = policy->governor_data;
+	/* struct interactive_policy *ipolicy = policy->governor_data; */
 	struct interactive_cpu *icpu;
 	unsigned int cpu;
 
-	gov_clear_update_util(ipolicy->policy);
+	/* gov_clear_update_util(ipolicy->policy); */
 
 	for_each_cpu(cpu, policy->cpus) {
 		icpu = &per_cpu(interactive_cpu, cpu);
 
-		icpu_cancel_work(icpu);
+		/*icpu_cancel_work(icpu);*/
 
 		down_write(&icpu->enable_sem);
 		icpu->ipolicy = NULL;
