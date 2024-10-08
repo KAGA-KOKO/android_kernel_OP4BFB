@@ -51,7 +51,7 @@ config IOSCHED_ZEN
 
 config IOSCHED_VR
 	bool "VR I/O scheduler"
-	default y
+	default n
 	---help---
 	  TEST.
 
