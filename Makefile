@@ -411,6 +411,7 @@ GCC_PLUGINS_CFLAGS :=
 CLANG_FLAGS :=
 TARGET_BUILD_VARIANT := user
 CONFIG_OPPO_FINGERPRINT_PLATFORM := 6765
+TARGET_PRODUCT := full_oppo6765
 
 #ifdef VENDOR_EDIT
 #Haiping.Zhong@PSW.AD.BuildConfig.BaseConfig.0, 2019/01/08, Add for build root disable dm verity
@@ -587,6 +588,7 @@ export KBUILD_AFLAGS_KERNEL KBUILD_CFLAGS_KERNEL
 export KBUILD_ARFLAGS
 export TARGET_BUILD_VARIANT
 export CONFIG_OPPO_FINGERPRINT_PLATFORM
+export TARGET_PRODUCT
 
 # When compiling out-of-tree modules, put MODVERDIR in the module
 # tree rather than in the kernel tree. The kernel tree might
