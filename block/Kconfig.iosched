@@ -49,6 +49,12 @@ config IOSCHED_ZEN
 	  FCFS, dispatches are back-inserted, deadlines ensure fairness.
 	  Should work best with devices where there is no travel delay.
 
+config IOSCHED_VR
+	bool "VR I/O scheduler"
+	default y
+	---help---
+	  TEST.
+
 config CFQ_GROUP_IOSCHED
 	bool "CFQ Group Scheduling support"
 	depends on IOSCHED_CFQ && BLK_CGROUP
