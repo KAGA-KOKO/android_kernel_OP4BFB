@@ -874,6 +874,10 @@ KBUILD_CFLAGS   += -O3
 endif
 endif
 
+# Flags to tune generated code for Cortex-A53 CPU
+KBUILD_CFLAGS += -mcpu=cortex-a53+crc+crypto -mtune=cortex-a53
+KBUILD_AFLAGS += -mcpu=cortex-a53+crc+crypto -mtune=cortex-a53
+
 KBUILD_CFLAGS += $(call cc-ifversion, -lt, 0409, \
 			$(call cc-disable-warning,maybe-uninitialized,))
 
