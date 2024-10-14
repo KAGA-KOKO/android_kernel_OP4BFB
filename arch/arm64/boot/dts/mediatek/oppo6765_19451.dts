@@ -274,6 +274,8 @@
 		touchpanel,button-type = <4>; 
 	};*/
 #endif
+	#address-cells = <1>;
+	#size-cells = <0>;
 	ilitek@0 {
 	       /* zhenzhenwu@ODM.BSP.TP  2020/02/03 modify for bring up himax TP */
 			compatible = "tchip,ilitek","himax,hxcommon";
