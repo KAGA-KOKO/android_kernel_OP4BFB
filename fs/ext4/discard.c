@@ -60,7 +60,7 @@ static void __init_discard_policy(struct ext4_sb_info *sbi,
 	}
 }
 
-void stop_discard_thread(struct ext4_sb_info *sbi)
+void ext4_stop_discard_thread(struct ext4_sb_info *sbi)
 {
 	struct discard_cmd_control *dcc = sbi->dcc_info;
 
@@ -181,7 +181,7 @@ void destroy_discard_cmd_control(struct ext4_sb_info *sbi)
 	if (!dcc)
 		return;
 
-	stop_discard_thread(sbi);
+	ext4_stop_discard_thread(sbi);
 
 	if (dcc->groups_block_bitmap)
 		vfree(dcc->groups_block_bitmap);
