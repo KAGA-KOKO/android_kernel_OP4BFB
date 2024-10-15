@@ -274,6 +274,8 @@
 		touchpanel,button-type = <4>; 
 	};*/
 #endif
+	#address-cells = <1>;
+	#size-cells = <0>;
 	ilitek@0 {
 	       /* zhenzhenwu@ODM.BSP.TP  2020/02/03 modify for bring up himax TP */
 			compatible = "tchip,ilitek","himax,hxcommon";
@@ -838,6 +840,8 @@
 };
 
 &i2c5 {
+	#address-cells = <1>;
+	#size-cells = <0>;
 	bq25601@6B {
 			compatible = "ti,bq25601";
 			reg = <0x6b>;
@@ -860,6 +864,8 @@
 /*Hanxing.Duan@ODM.BSP.CHG.Basic 2018/11/28 add for bring up charger end */
 
 &i2c3 {
+	#address-cells = <1>;
+	#size-cells = <0>;
 	rt9465@4b {
 		compatible = "richtek,rt9465";
 		reg = <0x4b>;
