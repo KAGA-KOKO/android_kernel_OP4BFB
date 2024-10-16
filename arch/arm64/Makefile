@@ -54,6 +54,7 @@ ifeq ($(cc-name),clang)
 # This is a workaround for https://bugs.llvm.org/show_bug.cgi?id=30792.
 # TODO: revert when this is fixed in LLVM.
 KBUILD_CFLAGS	+= -mno-implicit-float
+KBUILD_CFLAGS	+= -mcpu=cortex-a53+crypto+dotprod
 else
 KBUILD_CFLAGS	+= -mgeneral-regs-only
 endif
