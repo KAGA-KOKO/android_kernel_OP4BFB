@@ -2664,6 +2664,7 @@ static int s_show(struct seq_file *m, void *p)
 	if (v->caller && (strcmp(current->comm, "android.bg") != 0))
 	#else
 	if (v->caller)
+	#endif
 		seq_printf(m, " dummy+0x0/0x0");
 
 	if (v->nr_pages)
