@@ -33,7 +33,6 @@
 #include <linux/soc/qcom/smem.h>
 #else
 #include <linux/soc/qcom/smem.h>
-#include <linux/uaccess.h>
 #endif
 
 #include <linux/slab.h>
