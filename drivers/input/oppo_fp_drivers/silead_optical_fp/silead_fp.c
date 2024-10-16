@@ -612,30 +612,6 @@ static int silfp_irq_status(struct silfp_data *fp_dev)
     }
     return -1;
 }
-{
-
-    fp_tpinfo = *tp_info;
-
-    //LOG_MSG_DEBUG(INFO_LOG, "[%s]:enter\n", __func__);
-
-    if(tp_info->touch_state== lasttouchmode){
-        return IRQ_HANDLED;
-    }
-    if(1 == tp_info->touch_state){
-        LOG_MSG_DEBUG(ERR_LOG, "[%s]:touch down\n", __func__);
-        silfp_netlink_send(g_fp_dev, SIFP_NETLINK_TP_TOUCHDOWN);
-        lasttouchmode = tp_info->touch_state;
-    }else{
-        LOG_MSG_DEBUG(ERR_LOG, "[%s]:touch up\n", __func__);
-        silfp_netlink_send(g_fp_dev, SIFP_NETLINK_TP_TOUCHUP);
-        lasttouchmode = tp_info->touch_state;
-    }
-
-    wake_lock_timeout(&g_fp_dev->wakelock, 1*HZ);
-
-    return IRQ_HANDLED;
-}
-
 static irqreturn_t silfp_irq_handler(int irq, void *dev_id)
 {
     struct silfp_data *fp_dev = (struct silfp_data *)dev_id;
@@ -1215,33 +1191,6 @@ silfp_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
     return retval;
 }
-{
-    static uint8_t lasttouchmode = 0;
-
-    if (g_fp_dev == NULL) {
-        return 0;
-    }
-
-    LOG_MSG_DEBUG(INFO_LOG, "tp_info %d, %d, %d, %d \n", tp_info->touch_state, tp_info->area_rate, tp_info->x, tp_info->y);
-
-    if(tp_info->touch_state == lasttouchmode) {
-        return 0;
-    }
-
-    if (1 == tp_info->touch_state) {
-        LOG_MSG_DEBUG(INFO_LOG, "touch finger down\n");
-        silfp_netlink_send(g_fp_dev, SIFP_NETLINK_TP_TOUCHDOWN);
-        lasttouchmode = tp_info->touch_state;
-    } else {
-        LOG_MSG_DEBUG(INFO_LOG, "touch finger up\n");
-        silfp_netlink_send(g_fp_dev, SIFP_NETLINK_TP_TOUCHUP);
-        lasttouchmode = tp_info->touch_state;
-    }
-
-    wake_lock_timeout(&g_fp_dev->wakelock, 10*HZ);
-    return 0;
-}
-EXPORT_SYMBOL(silfp_touch_event_handler);
 
 #ifdef CONFIG_COMPAT
 static long
