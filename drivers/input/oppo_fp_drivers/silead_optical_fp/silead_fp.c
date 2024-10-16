@@ -612,8 +612,6 @@ static int silfp_irq_status(struct silfp_data *fp_dev)
     }
     return -1;
 }
-
-int silfp_opticalfp_irq_handler(struct fp_dev_touch_info* tp_info)
 {
 
     fp_tpinfo = *tp_info;
@@ -1217,8 +1215,6 @@ silfp_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
     return retval;
 }
-
-int  silfp_touch_event_handler(struct fp_dev_touch_info* tp_info)
 {
     static uint8_t lasttouchmode = 0;
 
